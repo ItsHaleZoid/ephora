@@ -23,7 +23,7 @@ export default function Hero() {
           />
         </div>
         <div className="mt-6">
-          <p className="cursor-pointer hover:underline text-xl text-blue-600 font-bold">or see what's going on...</p>
+          <p className="cursor-pointer hover:underline text-xl text-blue-600 font-bold">or see what&apos;s going on...</p>
         </div>
       </div>
     </section>

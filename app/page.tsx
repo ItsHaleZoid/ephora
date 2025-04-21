@@ -10,7 +10,7 @@ export default function Home() {
   <div>
     <Header />
     <Hero />
-    <FeaturesSection items={[]} />
+    <FeaturesSection />
     <Problem />
     <FAQ />
     <Footer />
