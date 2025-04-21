@@ -8,9 +8,6 @@ interface Post {
   content: string
   created_at: string
   user_id: string
-  users: {
-    email: string
-  } | null
 }
 
 const FeedPage = () => {
@@ -24,7 +21,7 @@ const FeedPage = () => {
           id,
           content,
           created_at,
-          user_id
+          user_id,
         `)
         .order('created_at', { ascending: false })
       
