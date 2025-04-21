@@ -20,7 +20,7 @@ const features = [
   }
 ]
 
-export default function FeaturesSection({ items }: { items: any[] }) {
+export default function FeaturesSection () {
   return (
     <section className="py-20 bg-gray-100 dark:bg-zinc-900">
       <div className="max-w-5xl mx-auto px-6 text-center">

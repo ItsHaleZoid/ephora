@@ -3,8 +3,6 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import SignUpPage from '@/app/auth/signup/page'
-import LoginPage from '@/app/auth/login/page'
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
 
