@@ -21,7 +21,7 @@ const FeedPage = () => {
           id,
           content,
           created_at,
-          user_id,
+          user_id
         `)
         .order('created_at', { ascending: false })
       
