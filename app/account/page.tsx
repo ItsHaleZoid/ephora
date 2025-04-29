@@ -1,12 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabase/client'
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Badge } from '@/components/ui/badge'
-import MyPosts from '@/components/MyPosts'
+import { supabase } from '../../lib/supabase/client'
+import { Card, CardContent } from '../../components/ui/card'
+import { Avatar, AvatarImage } from '../../components/ui/avatar'
+import { Skeleton } from '../../components/ui/skeleton'
+import MyPosts from '../../components/MyPosts'
 
 interface Community {
   id: string
