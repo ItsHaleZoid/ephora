@@ -1,8 +1,14 @@
 import * as React from "react"
-
+import { useState } from "react"
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+interface CardProps extends React.ComponentProps<"div"> {
+  replies?: React.ReactNode;
+}
+
+function Card({ className, replies, ...props }: CardProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div
       data-slot="card"
@@ -10,8 +16,11 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
         className
       )}
+      onClick={() => setIsOpen(!isOpen)}
       {...props}
-    />
+    >
+      {isOpen && replies && <CardContent>{replies}</CardContent>}
+    </div>
   )
 }
 

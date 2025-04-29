@@ -4,7 +4,7 @@ import { HelpCircle, MessageSquareX, Users } from 'lucide-react'
 
 export default function Problem() {
   return (
-    <section className="w-full py-24 bg-white dark:bg-black border-y border-gray-200 dark:border-zinc-800">
+    <section className="w-full py-24 border-y border-gray-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-12">
           Why Most Learners Struggle

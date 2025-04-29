@@ -1,10 +1,11 @@
-'use client'
+
 
 import { Input } from '@/components/ui/input'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="w-full px-6 py-28 md:py-36 bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-zinc-900 text-center">
+    <section className="w-full px-6 py-28 md:py-36 text-center bg-gradient-to-b from-white/50 to-transparent dark:from-zinc-800/50 dark:to-transparent">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
           Learn <span className="text-blue-600">Anything</span>,<br />
@@ -19,11 +20,11 @@ export default function Hero() {
           <Input
             type="text"
             placeholder="Search topics, communities, or questions..."
-            className="w-3xl h-full text-base px-4 py-3 bg-white dark:bg-zinc-800 border border-gray-400 dark:border-zinc-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-3xl h-full text-base px-4 py-3 bg-white dark:bg-zinc-800 shadow-[6px_6px_0px_#000000] border-black border-3 dark:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className="mt-6">
-          <p className="cursor-pointer hover:underline text-xl text-blue-600 font-bold">or see what&apos;s going on...</p>
+          <Link href="/feed" className="cursor-pointer hover:underline text-xl text-blue-600 font-bold">or see what&apos;s going on...</Link>
         </div>
       </div>
     </section>

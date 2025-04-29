@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  webpack: (config: any) => {
+    config.resolve.alias['@'] = __dirname;
+    return config;
+  },
+  images: {
+    domains: [
+      'ihznvqmwfxxscpqcivrt.supabase.co'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+    ],
+    unoptimized: true, // Allow images from local files
+  },
+}
 
-export default nextConfig;
+export default nextConfig
