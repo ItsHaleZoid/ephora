@@ -1,15 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
-import { FcGoogle } from 'react-icons/fc'
+import { useRouter } from 'next/navigation'
+import { Eye, EyeOff, User } from 'lucide-react'
 
+import { ButtonArrow } from '@/components/ui/button-arrow'
+import ButtonShadow from '@/components/ui/button-shadow'
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -25,64 +28,67 @@ export default function LoginPage() {
     setLoading(false)
   }
 
-  const handleGoogleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+  const handleGoogleLogin = async () => {
+    await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: {
-        redirectTo: `${location.origin}/auth/callback`,
-      },
     })
-
-    if (error) setError(error.message)
   }
 
   return (
-    <div className="min-h-screen flex w-full items-center justify-center bg-white dark:bg-black px-6">
-      <div className="w-full max-w-md space-y-6 border border-gray-200 dark:border-zinc-800 p-8 rounded-xl shadow-[-6px_-6px_0px_rgba(0,0,0,0.1),_2px_2px_25px_rgba(0,0,0,0.15)]">
-        <h1 className="text-3xl font-bold text-center">Welcome back!</h1>
+    <main>
+    
+     
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-white to-zinc-100 dark:from-black dark:to-zinc-900">
+      <div className="w-full max-w-sm bg-white dark:bg-zinc-950 rounded-2xl shadow-[10px_10px_0px_black] border-3 border-black  p-6 space-y-6">
+        <h2 className="text-2xl font-semibold text-center">Back for more, huh?</h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm"
-        />
+        <div className="space-y-4">
+          <div className="relative">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-xl border px-4 py-3 pl-10 text-sm bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <User className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+          </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm"
-        />
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-xl border px-4 py-3 pl-10 text-sm bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-3 text-gray-500"
+            >
+              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            </button>
+          </div>
 
-        {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <p className="text-sm text-red-500">{error}</p>}
 
-        <Button onClick={handleLogin} className="w-full" disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </Button>
-
-        <div className="flex items-center gap-2 my-4">
-          <div className="h-px flex-1 bg-gray-300 dark:bg-zinc-700" />
-          <span className="text-sm text-gray-500 dark:text-gray-400">or</span>
-          <div className="h-px flex-1 bg-gray-300 dark:bg-zinc-700" />
+          <ButtonShadow onClick={handleLogin} width="w-full" color="bg-yellow-400">
+            {loading ? 'Loggin in...' : 'Login'}
+          </ButtonShadow>
         </div>
 
-        <Button
-          variant="outline"
-          className="w-full flex items-center justify-center gap-2"
-          onClick={handleGoogleSignIn}
-        >
-          <FcGoogle className="w-5 h-5" />
-          Sign in with Google
-        </Button>
+        <div className="flex items-center justify-center py">
+          <span className="text-lg text-gray-400">or</span>
+        </div>
 
-        <p className="text-sm text-center text-gray-500 dark:text-gray-400">
-          Don’t have an account?{' '}
-          <a href="/auth/signup" className="text-blue-600 hover:underline">Sign up</a>
-        </p>
+        <ButtonShadow onClick={handleGoogleLogin} variant="default" width="w-full" color="bg-gray-100">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-4 h-4 mr-2" />
+          Sign in with Google
+        </ButtonShadow>
       </div>
     </div>
+    
+    </main>
   )
 }
